@@ -5,7 +5,6 @@ from pages.shop_page import ShopPages
 from settings import test_user
 
 
-
 class TestsA1Shop:
 
     def test_add_stock_rnd_phone_to_cart(self, web_browser):
@@ -44,6 +43,7 @@ class TestsA1Shop:
         page.radio_passwrd_btn.click()
         page.enter_phone_filed.send_keys(test_user.login)
         page.enter_password.send_keys(test_user.passwrd)
+        page.enter_button.click()
 
 
 

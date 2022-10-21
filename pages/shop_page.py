@@ -25,4 +25,5 @@ class ShopPages(WebPage):
     radio_passwrd_btn = WebElement(xpath="//span[2]/label")
     enter_phone_filed = WebElement(css_selector='#itelephone_new')
     enter_password = WebElement(css_selector='#ipassword')
+    enter_button = WebElement(xpath='//*[@id="butt1"]/span')
 
