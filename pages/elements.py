@@ -272,6 +272,21 @@ class ManyWebElements(WebElement):
 
         return result
 
+    def scroll_to_element(self):
+        """ Scroll page to the element. """
+
+        element = self.find()
+
+        # Scroll page to the element:
+        # Option #1 to scroll to element:
+        # self._web_driver.execute_script("arguments[0].scrollIntoView();", element)
+
+        # Option #2 to scroll to element:
+        try:
+            element.send_keys(Keys.DOWN)
+        except Exception as e:
+            pass  # Just ignore the error if we can't send the keys to the element
+
     def get_attribute(self, attr_name):
         """ Get attribute of all elements. """
 
