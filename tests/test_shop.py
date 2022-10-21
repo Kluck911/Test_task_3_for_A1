@@ -42,6 +42,8 @@ class TestsA1Shop:
 
         # Step 4
         page.radio_passwrd_btn.click()
+        page.enter_phone_filed.send_keys(test_user.login)
+        page.enter_password.send_keys(test_user.passwrd)
 
 
 

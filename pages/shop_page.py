@@ -22,6 +22,7 @@ class ShopPages(WebPage):
     pay_in_mounth = WebElement(xpath='//*[@class="live-filter-content-item active"]//span[@class="h h--4"]')
 
     # list login screen selectors
-    enter_phone_filed = WebElement(css_selector='#itelephone_sms')
     radio_passwrd_btn = WebElement(xpath="//span[2]/label")
+    enter_phone_filed = WebElement(css_selector='#itelephone_new')
+    enter_password = WebElement(css_selector='#ipassword')
 
