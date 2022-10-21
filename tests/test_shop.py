@@ -20,8 +20,9 @@ class TestsA1Shop:
         assert 'https://www.a1.by/ru/shop/phones/smartphones' in page.get_current_url() # check url
         assert page.phone_page_summary.get_text() == start_page_phone_summary  # check phone summary
 
-
-
         # Step 3
+        page.payment_options.click()
+
+
 
 
