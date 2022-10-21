@@ -2,6 +2,7 @@ from time import sleep
 import random
 
 from pages.shop_page import ShopPages
+from settings import test_user
 
 
 
@@ -24,13 +25,23 @@ class TestsA1Shop:
 
         # Step 3
         page.payment_options_btn.click()
-
+        save_payment_options = ''
         for i in range(len(page.list_payment_options.get_text())):
             if "6 мес" in page.list_payment_options[i].text:
                 save_payment_options = page.list_payment_options[i].text
+                print(save_payment_options)
                 page.list_payment_options[i].click()
 
+        assert page.pay_in_mounth.get_text() in save_payment_options
+
+        # Step 4
         page.buy_btn.click()
 
         assert "https://asmp.a1.by/asmp/LoginMasterServlet" in page.get_current_url()
         assert page.page_h1.get_text() == "Вход в аккаунт"
+
+        # Step 4
+        page.radio_passwrd_btn.click()
+
+
+
