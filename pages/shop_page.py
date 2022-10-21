@@ -27,3 +27,8 @@ class ShopPages(WebPage):
     enter_password = WebElement(css_selector='#ipassword')
     enter_button = WebElement(xpath='//*[@id="butt1"]/span')
 
+    #list cart selectors
+    page_h2 = WebElement(xpath='//h2')
+    cart_phone_summary = WebElement(xpath='//h4[@class="h h--4 payment-header"]')
+    cart_phone_descr = ManyWebElements(css_selector=".payment-format-selection-radio--active")
+

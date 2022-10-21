@@ -1,8 +1,7 @@
-from time import sleep
 import random
 
 from pages.shop_page import ShopPages
-from settings import test_user
+from settings import test_user, valid_user
 
 
 class TestsA1Shop:
@@ -28,7 +27,6 @@ class TestsA1Shop:
         for i in range(len(page.list_payment_options.get_text())):
             if "6 мес" in page.list_payment_options[i].text:
                 save_payment_options = page.list_payment_options[i].text
-                print(save_payment_options)
                 page.list_payment_options[i].click()
 
         assert page.pay_in_mounth.get_text() in save_payment_options
@@ -39,11 +37,23 @@ class TestsA1Shop:
         assert "https://asmp.a1.by/asmp/LoginMasterServlet" in page.get_current_url()
         assert page.page_h1.get_text() == "Вход в аккаунт"
 
-        # Step 4
+        # Step 5
         page.radio_passwrd_btn.click()
-        page.enter_phone_filed.send_keys(test_user.login)
-        page.enter_password.send_keys(test_user.passwrd)
+        page.enter_phone_filed.send_keys(valid_user.login)
+        page.enter_password.send_keys(valid_user.passwrd)
         page.enter_button.click()
 
+        assert "Выбор размера и срока платежа" in page.page_h2.get_text()
 
+        # Step 6
 
+        phone_cart_summary = page.cart_phone_summary.get_text()
+        phone_mounths_pay = page.cart_phone_descr[0].text
+        phone_pay_value = page.cart_phone_descr[1].text
+        print(f"\nВыбран {phone_cart_summary}, вариант оплаты: {phone_mounths_pay} {phone_pay_value}")
+        assert phone_cart_summary == start_page_phone_summary  # проверяем или название тел. в корзине совпадает с
+                                                               # выбранным на начальной странице
+        check = True  # Выберите False чтобы отключить проверку совпадения стоимости в корзине и и странице телефона
+        if check:
+            assert phone_pay_value in save_payment_options # проверяем или выбранный в корзине способ оплаты совпадает со
+                                                       # способом выбранном на странице телефона
