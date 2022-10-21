@@ -50,6 +50,9 @@ def web_browser(request):
         except:
             pass # just ignore any errors here
 
+    #browser.close()
+
+
 
 def get_test_case_docstring(item):
     """ This function gets doc string from test case and format it
