@@ -21,7 +21,7 @@ def pytest_runtest_makereport(item, call):
 @pytest.fixture
 def web_browser(request):
     browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-    browser.set_window_size(1920, 950)
+    browser.set_window_size(2500, 950)
 
     # Return browser instance to test case:
     yield browser

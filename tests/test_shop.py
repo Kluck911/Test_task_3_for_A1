@@ -27,5 +27,10 @@ class TestsA1Shop:
 
         for i in range(len(page.list_payment_options.get_text())):
             if "6 мес" in page.list_payment_options[i].text:
+                save_payment_options = page.list_payment_options[i].text
                 page.list_payment_options[i].click()
 
+
+        page.buy_btn.click()
+
+        assert "https://asmp.a1.by/asmp/LoginMasterServlet" in page.get_current_url()
