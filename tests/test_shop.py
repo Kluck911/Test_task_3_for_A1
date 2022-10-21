@@ -20,7 +20,7 @@ class TestsA1Shop:
         page.list_stock_phone_btn[rnd_number].click()
 
         assert 'https://www.a1.by/ru/shop/phones/smartphones' in page.get_current_url()  # check url
-        assert page.phone_page_summary.get_text() == start_page_phone_summary  # check phone summary
+        assert page.page_h1.get_text() == start_page_phone_summary  # check phone summary
 
         # Step 3
         page.payment_options_btn.click()
@@ -30,7 +30,7 @@ class TestsA1Shop:
                 save_payment_options = page.list_payment_options[i].text
                 page.list_payment_options[i].click()
 
-
         page.buy_btn.click()
 
         assert "https://asmp.a1.by/asmp/LoginMasterServlet" in page.get_current_url()
+        assert page.page_h1.get_text() == "Вход в аккаунт"

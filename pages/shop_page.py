@@ -14,7 +14,7 @@ class ShopPages(WebPage):
     list_phone_summary = ManyWebElements(xpath="//*[@id='promo-product-button_0']/../..//h3")
     cookie_btn = WebElement(css_selector=".cookie-panel-button")
 
-    phone_page_summary = WebElement(xpath="//h1")
+    page_h1 = WebElement(xpath="//h1")
     payment_options_btn = WebElement(xpath='//*[@class="live-filter-controls"]')
     list_payment_options = ManyWebElements(xpath='//li/div[@class="value"]')
     buy_btn = WebElement(xpath='//*[@class="live-filter-content-item active"]//button')
