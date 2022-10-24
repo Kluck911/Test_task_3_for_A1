@@ -55,8 +55,8 @@ class TestsA1Shop:
         assert phone_cart_summary == start_page_phone_summary  # название тел. в корзине совпадает с  выбранным на
                                                                 # начальной странице
 
-        # Выберите False чтобы отключить проверку совпадения способа оплаты в корзине и на странице телефона
-        last_check = True
+        # Выберите True чтобы включить проверку совпадения способа оплаты в корзине и на странице телефона
+        last_check = False
 
         if last_check:
             assert phone_pay_value in save_payment_options  # проверяем что  выбранный в корзине способ оплаты совпадает
