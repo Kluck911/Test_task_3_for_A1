@@ -15,7 +15,7 @@ class ShopPages(WebPage):
     cookie_btn = WebElement(css_selector=".cookie-panel-button")
 
     # list smartphone page selectors
-    page_h1 = WebElement(xpath="//h1")
+    smart_page_h1 = WebElement(xpath="//h1")
     payment_options_btn = WebElement(xpath='//*[@class="live-filter-controls"]')
     list_payment_options = ManyWebElements(xpath='//li/div[@class="value"]')
     buy_btn = WebElement(xpath='//*[@class="live-filter-content-item active"]//button')
@@ -28,7 +28,7 @@ class ShopPages(WebPage):
     enter_button = WebElement(xpath='//*[@id="butt1"]/span')
 
     #list cart selectors
-    page_h2 = WebElement(xpath='//h2')
+    cart_page_h2 = WebElement(xpath='//h2')
     cart_phone_summary = WebElement(xpath='//h4[@class="h h--4 payment-header"]')
     cart_phone_descr = ManyWebElements(css_selector=".payment-format-selection-radio--active")
 

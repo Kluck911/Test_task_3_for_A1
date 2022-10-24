@@ -21,7 +21,7 @@ def pytest_runtest_makereport(item, call):
 @pytest.fixture
 def web_browser(request):
     browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-    browser.set_window_size(2500, 950)
+    browser.maximize_window()
 
     # Return browser instance to test case:
     yield browser
@@ -50,7 +50,7 @@ def web_browser(request):
         except:
             pass # just ignore any errors here
 
-    #browser.close()
+    browser.close()
 
 
 
