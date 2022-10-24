@@ -51,9 +51,13 @@ class TestsA1Shop:
         phone_mounths_pay = page.cart_phone_descr[0].text
         phone_pay_value = page.cart_phone_descr[1].text
         print(f"\nВыбран {phone_cart_summary}, вариант оплаты: {phone_mounths_pay} {phone_pay_value}")
-        assert phone_cart_summary == start_page_phone_summary  # проверяем или название тел. в корзине совпадает с
-                                                               # выбранным на начальной странице
-        check = True  # Выберите False чтобы отключить проверку совпадения стоимости в корзине и и странице телефона
-        if check:
-            assert phone_pay_value in save_payment_options # проверяем или выбранный в корзине способ оплаты совпадает со
-                                                       # способом выбранном на странице телефона
+
+        assert phone_cart_summary == start_page_phone_summary  # название тел. в корзине совпадает с  выбранным на
+                                                                # начальной странице
+
+        # Выберите False чтобы отключить проверку совпадения способа оплаты в корзине и на странице телефона
+        last_check = True
+
+        if last_check:
+            assert phone_pay_value in save_payment_options  # проверяем что  выбранный в корзине способ оплаты совпадает
+                                                            # со способом выбранном на странице телефона
