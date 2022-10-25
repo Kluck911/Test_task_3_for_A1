@@ -1,4 +1,6 @@
+import json
 import random
+
 
 from pages.shop_page import ShopPages
 from settings import test_user, valid_user
@@ -10,11 +12,14 @@ class TestsA1Shop:
 
         # Step 1
         page = ShopPages(web_browser)
+        web_browser.execute_script("window.localStorage.setItem('{}',{})".format('cookieAccepted', json.dumps('true')))
+        web_browser.refresh()  # Send cookieAccepted is true in localStorage and refresh page
+
         assert page.get_current_url() == 'https://www.a1.by/ru/c/shop', 'shop page url error'
 
         # Step 2
         rnd_number = random.randint(0, len(page.list_stock_phone_btn.get_text())-1)  # random number for phone block
-        page.cookie_btn.click()  # close cookie message
+
         start_page_phone_summary = page.list_phone_summary.get_text()[rnd_number]  # save smartphone summary
         page.list_stock_phone_btn[rnd_number].click()
 
@@ -56,7 +61,7 @@ class TestsA1Shop:
                                                                 # начальной странице
 
         # Выберите True чтобы включить проверку совпадения способа оплаты в корзине и на странице телефона
-        last_check = False
+        last_check = True
 
         if last_check:
             assert phone_pay_value in save_payment_options  # проверяем что  выбранный в корзине способ оплаты совпадает
