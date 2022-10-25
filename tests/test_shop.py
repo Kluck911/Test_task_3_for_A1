@@ -61,7 +61,7 @@ class TestsA1Shop:
                                                                 # начальной странице
 
         # Выберите True чтобы включить проверку совпадения способа оплаты в корзине и на странице телефона
-        last_check = True
+        last_check = False
 
         if last_check:
             assert phone_pay_value in save_payment_options  # проверяем что  выбранный в корзине способ оплаты совпадает
