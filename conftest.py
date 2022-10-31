@@ -19,14 +19,12 @@ def pytest_runtest_makereport(item):
 
 
 @pytest.fixture(scope='class')
-def web_browser(request):
+def web_browser():
     browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     browser.maximize_window()
 
     # Return browser instance to test case:
     yield browser
-
-    # Do tear down (this code will be executed after each test):
 
     browser.close()
 

@@ -1,6 +1,8 @@
 import json
 import random
 
+import time
+
 from pages.shop_page import ShopPages
 from pages.smart_page import SmartphonePage
 from pages.loginPage import LoginPage
@@ -57,7 +59,9 @@ class TestsA1Shop:
         page.radio_passwrd_btn.click()
         page.enter_phone_filed.send_keys(valid_user.login)
         page.enter_password.send_keys(valid_user.passwrd)
+        time.sleep(3)
         page.enter_button.click()
+        time.sleep(3)
 
         assert "Выбор размера и срока платежа" in page.cart_page_h2.get_text()
 
