@@ -1,6 +1,4 @@
 import pytest
-import allure
-import uuid
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -26,7 +24,7 @@ def web_browser():
     # Return browser instance to test case:
     yield browser
 
-    # browser.close()
+    browser.close()
 
 
 def get_test_case_docstring(item):

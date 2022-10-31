@@ -11,12 +11,9 @@ class SmartphonePage(WebPage):
 
         super().__init__(web_driver, url)
 
-
     # list smartphone page selectors
     smart_page_h1 = WebElement(xpath="//h1")
     payment_options_btn = WebElement(xpath='//*[@class="live-filter-controls"]')
     list_payment_options = ManyWebElements(xpath='//li/div[@class="value"]')
     buy_btn = WebElement(xpath='//*[@class="live-filter-content-item active"]//button')
-    pay_in_mounth = WebElement(xpath='//*[@class="live-filter-content-item active"]//span[@class="h h--4"]')
-
-
+    pay_in_month = WebElement(xpath='//*[@class="live-filter-content-item active"]//span[@class="h h--4"]')
