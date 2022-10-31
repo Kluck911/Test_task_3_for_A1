@@ -8,7 +8,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 @pytest.hookimpl(hookwrapper=True, tryfirst=True)
-def pytest_runtest_make_report(item):
+def pytest_runtest_makereport(item):
     # This function helps to detect that some test failed
     # and pass this information to teardown:
 
@@ -79,7 +79,7 @@ def get_test_case_docstring(item):
     return full_name
 
 
-def pytest_item_collected(item):
+def pytest_itemcollected(item):
     """ This function modifies names of test cases "on the fly"
         during the execution of test cases.
     """
