@@ -18,4 +18,5 @@ class SmartphonePage(WebPage):
     list_payment_options = ManyWebElements(xpath='//li/div[@class="value"]')
     buy_btn = WebElement(xpath='//*[@class="live-filter-content-item active"]//button')
     pay_in_mounth = WebElement(xpath='//*[@class="live-filter-content-item active"]//span[@class="h h--4"]')
+    cart_page_h2 = WebElement(xpath='//h2')
 

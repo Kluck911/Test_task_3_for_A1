@@ -13,6 +13,7 @@ class ShopPages(WebPage):
     list_stock_phone_btn = ManyWebElements(xpath="//*[@id='promo-product-button_0']")
     list_phone_summary = ManyWebElements(xpath="//*[@id='promo-product-button_0']/../..//h3")
     cookie_btn = WebElement(css_selector=".cookie-panel-button")
+    smart_page_h1 = WebElement(xpath="//h1")
 
 
 

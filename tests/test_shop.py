@@ -5,7 +5,10 @@ from pages.shop_page import ShopPages
 from pages.smart_page import SmartphonePage
 from pages.loginPage import LoginPage
 from pages.cart_page import CartPage
-from settings import test_user, valid_user
+from settings import valid_user
+
+start_page_phone_summary = None
+save_payment_options = None
 
 
 class TestsA1Shop:
@@ -23,6 +26,7 @@ class TestsA1Shop:
         page = ShopPages(web_browser)
         rnd_number = random.randint(0, len(page.list_stock_phone_btn.get_text()) - 1)  # random number for phone block
 
+        global start_page_phone_summary
         start_page_phone_summary = page.list_phone_summary.get_text()[rnd_number]  # save smartphone summary
         page.list_stock_phone_btn[rnd_number].click()
 
@@ -33,7 +37,7 @@ class TestsA1Shop:
     def test_step_3(self, web_browser):
         page = SmartphonePage(web_browser, url=web_browser.current_url)
         page.payment_options_btn.click()
-        save_payment_options = ''
+        global save_payment_options
         for i in range(len(page.list_payment_options.get_text())):
             if "6 мес" in page.list_payment_options[i].text:
                 save_payment_options = page.list_payment_options[i].text
@@ -57,7 +61,7 @@ class TestsA1Shop:
 
         assert "Выбор размера и срока платежа" in page.cart_page_h2.get_text()
 
-    def test_step_5(self, web_browser):
+    def test_step_6(self, web_browser):
         page = CartPage(web_browser, url=web_browser.current_url)
         phone_cart_summary = page.cart_phone_summary.get_text()
         phone_months_pay = page.cart_phone_descr[0].text
