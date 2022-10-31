@@ -3,7 +3,7 @@ import random
 
 from pages.shop_page import ShopPages
 from pages.smart_page import SmartphonePage
-from pages.loginPage import LoginPage
+from pages.login_page import LoginPage
 from pages.cart_page import CartPage
 from settings import valid_user
 
