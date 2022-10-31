@@ -1,7 +1,6 @@
 import json
 import random
 
-
 from pages.shop_page import ShopPages
 from settings import test_user, valid_user
 
@@ -18,7 +17,7 @@ class TestsA1Shop:
         assert page.get_current_url() == 'https://www.a1.by/ru/c/shop', 'shop page url error'
 
         # Step 2
-        rnd_number = random.randint(0, len(page.list_stock_phone_btn.get_text())-1)  # random number for phone block
+        rnd_number = random.randint(0, len(page.list_stock_phone_btn.get_text()) - 1)  # random number for phone block
 
         start_page_phone_summary = page.list_phone_summary.get_text()[rnd_number]  # save smartphone summary
         page.list_stock_phone_btn[rnd_number].click()
@@ -53,16 +52,16 @@ class TestsA1Shop:
         # Step 6
 
         phone_cart_summary = page.cart_phone_summary.get_text()
-        phone_mounths_pay = page.cart_phone_descr[0].text
+        phone_months_pay = page.cart_phone_descr[0].text
         phone_pay_value = page.cart_phone_descr[1].text
-        print(f"\nВыбран {phone_cart_summary}, вариант оплаты: {phone_mounths_pay} {phone_pay_value}")
+        print(f"\nВыбран {phone_cart_summary}, вариант оплаты: {phone_months_pay} {phone_pay_value}")
 
-        assert phone_cart_summary == start_page_phone_summary  # название тел. в корзине совпадает с  выбранным на
-                                                                # начальной странице
+        assert phone_cart_summary == start_page_phone_summary  # Название тел. в корзине совпадает с выбранным на
+        # начальной странице
 
-        # Выберите True чтобы включить проверку совпадения способа оплаты в корзине и на странице телефона
+        # Выберите True, чтобы включить проверку совпадения способа оплаты в корзине и на странице телефона
         last_check = False
 
         if last_check:
-            assert phone_pay_value in save_payment_options  # проверяем что  выбранный в корзине способ оплаты совпадает
-                                                            # со способом выбранном на странице телефона
+            assert phone_pay_value in save_payment_options  # проверяем что выбранный в корзине способ оплаты совпадает
+            # со способом выбранном на странице телефона

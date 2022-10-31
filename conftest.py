@@ -8,7 +8,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 @pytest.hookimpl(hookwrapper=True, tryfirst=True)
-def pytest_runtest_makereport(item, call):
+def pytest_runtest_make_report(item):
     # This function helps to detect that some test failed
     # and pass this information to teardown:
 
@@ -26,14 +26,14 @@ def web_browser(request):
     # Return browser instance to test case:
     yield browser
 
-    # Do teardown (this code will be executed after each test):
+    # Do tear down (this code will be executed after each test):
 
     if request.node.rep_call.failed:
-        # Make the screen-shot if test failed:
+        # Make the screenshot if test failed:
         try:
             browser.execute_script("document.body.bgColor = 'white';")
 
-            # Make screen-shot for local debug:
+            # Make screenshot for local debug:
             browser.save_screenshot('screenshots/' + str(uuid.uuid4()) + '.png')
 
             # Attach screenshot to Allure report:
@@ -48,10 +48,9 @@ def web_browser(request):
                 print(log)
 
         except:
-            pass # just ignore any errors here
+            pass  # just ignore any errors here
 
     browser.close()
-
 
 
 def get_test_case_docstring(item):
@@ -80,7 +79,7 @@ def get_test_case_docstring(item):
     return full_name
 
 
-def pytest_itemcollected(item):
+def pytest_item_collected(item):
     """ This function modifies names of test cases "on the fly"
         during the execution of test cases.
     """
