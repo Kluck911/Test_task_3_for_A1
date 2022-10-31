@@ -47,3 +47,29 @@ class TestsA1Shop:
 
         assert "https://asmp.a1.by/asmp/LoginMasterServlet" in page.get_current_url()
         assert page.smart_page_h1.get_text() == "Вход в аккаунт"
+
+    def test_step_5(self, web_browser):
+        page = LoginPage(web_browser, url=web_browser.current_url)
+        page.radio_passwrd_btn.click()
+        page.enter_phone_filed.send_keys(valid_user.login)
+        page.enter_password.send_keys(valid_user.passwrd)
+        page.enter_button.click()
+
+        assert "Выбор размера и срока платежа" in page.cart_page_h2.get_text()
+
+    def test_step_5(self, web_browser):
+        page = CartPage(web_browser, url=web_browser.current_url)
+        phone_cart_summary = page.cart_phone_summary.get_text()
+        phone_months_pay = page.cart_phone_descr[0].text
+        phone_pay_value = page.cart_phone_descr[1].text
+        print(f"\nВыбран {phone_cart_summary}, вариант оплаты: {phone_months_pay} {phone_pay_value}")
+
+        assert phone_cart_summary == start_page_phone_summary  # Название тел. в корзине совпадает с выбранным на
+        # начальной странице
+
+        # Выберите True, чтобы включить проверку совпадения способа оплаты в корзине и на странице телефона
+        last_check = False
+
+        if last_check:
+            assert phone_pay_value in save_payment_options  # проверяем что выбранный в корзине способ оплаты совпадает
+            # со способом выбранном на странице телефона
