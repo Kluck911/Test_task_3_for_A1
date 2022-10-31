@@ -5,4 +5,4 @@ class User:
 
 
 test_user = User(phone="111111111", password="aaaaaa")
-valid_user = User(phone="111111111", password="11111111")
+valid_user = User(phone="111111111", password="XXXXXXXX")

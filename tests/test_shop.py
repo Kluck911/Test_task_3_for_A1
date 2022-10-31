@@ -55,7 +55,7 @@ class Tests_Case_A1Shop:
         assert page.pay_in_month.get_text() in save_payment_options
 
     def test_step_4(self, web_browser):
-        """Проверка нажать кнопки войти и купить"""
+        """Проверка нажатия кнопки войти и купить"""
 
         page = SmartphonePage(web_browser, url=web_browser.current_url)
 

@@ -7,8 +7,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 @pytest.hookimpl(hookwrapper=True, tryfirst=True)
 def pytest_runtest_makereport(item):
-    # This function helps to detect that some test failed
-    # and pass this information to teardown:
+    """This function helps to detect that some test failed
+    and pass this information to teardown:"""
 
     outcome = yield
     rep = outcome.get_result()
@@ -16,9 +16,16 @@ def pytest_runtest_makereport(item):
     return rep
 
 
+def chrome_options():
+    options = webdriver.ChromeOptions()
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
+    return options
+
+
 @pytest.fixture(scope='class')
 def web_browser():
-    browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+
+    browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options())
     browser.maximize_window()
 
     # Return browser instance to test case:
@@ -60,21 +67,3 @@ def pytest_itemcollected(item):
 
     if item._obj.__doc__:
         item._nodeid = get_test_case_docstring(item)
-
-
-def pytest_collection_finish(session):
-    """ This function modified names of test cases "on the fly"
-        when we are using --collect-only parameter for pytest
-        (to get the full list of all existing test cases).
-    """
-
-    if session.config.option.collectonly is True:
-        for item in session.items:
-            # If test case has a doc string we need to modify it's name to
-            # it's doc string to show human-readable reports and to
-            # automatically import test cases to test management system.
-            if item._obj.__doc__:
-                full_name = get_test_case_docstring(item)
-                print(full_name)
-
-        pytest.exit('Done!')
